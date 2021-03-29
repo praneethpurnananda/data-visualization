@@ -1,0 +1,38 @@
+<div class="main">
+  <mat-card class="card">
+    <div class="left">
+      <span class="title">Dashboard</span>
+      <div class="content">
+          <div class="price">
+            <span class="main-price">$3468.92</span>
+            <span class="sub">Current month earnings</span>
+          </div>
+          <div class="price">
+            <span class="main-price">82</span>
+            <span class="sub">Current month sales</span>
+          </div>
+         <div class="btn">
+            <button mat-raised-button color="primary">Last month summary</button>
+          </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="filters">
+          <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Outline form field</mat-label>
+              <input matInput placeholder="Placeholder">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+              <mat-label>Outline form field</mat-label>
+              <input matInput placeholder="Placeholder">
+          </mat-form-field>
+        </div>
+      <highcharts-chart
+         [Highcharts] = "highcharts"
+         [options] = "chartOptions"
+         class="chart">
+      </highcharts-chart>
+    </div>
+
+  </mat-card>
+</div>

@@ -1,0 +1,23 @@
+.main{
+  padding: 25px;
+  background-color: red;
+}
+
+.card{
+  background-color: black;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+
+
+.left{
+  background-color: orange;
+  flex-grow: 2;
+}
+
+.right{
+  background-color: blue;
+  flex-grow: 8;
+}

@@ -1,0 +1,66 @@
+.main{
+  padding: 30px;
+}
+
+.card{
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.left{
+  flex-grow: 5;
+  /*background-color: red;*/
+}
+
+.right{
+  flex-grow: 6;
+  /*background-color: blue;*/
+}
+
+.title{
+  display: block;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 75%;
+  padding: 30px;
+}
+
+.price span{
+  display: block;
+}
+
+.price .main-price{
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.price .sub{
+  margin-top: 5%;
+}
+
+.chart{
+  display: block;
+  height: 350px;
+  width: 120%;
+}
+
+.filters{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.form-field{
+  padding-left: 25px;
+  padding-top: 10px;
+}
