@@ -1,1 +1,47 @@
-<p>side-bar works!</p>
+<div [className]="newClassName ? 'sidebar' : 'sidebar collapse' ">
+    <div class="sidebar-menu">
+        <li class="item">
+            <a class="menu-btn">
+                <mat-icon material-icons-outlined>people</mat-icon>
+                <span class="sidebar-text">User Management</span>
+            </a>
+        </li>
+
+        <li class="item">
+            <a class="menu-btn">
+                <mat-icon material-icons-outlined>settings</mat-icon>
+                <span class="sidebar-text">Config Management</span>
+            </a>
+            <!--sub-menu starts-->
+            <ul [className]="newClassName ? 'hover-menu' : 'hover-menu-collapse' ">
+                <br>
+                <li class="hover-menu-items">
+                    <a>
+                        <mat-icon material-icons-outlined>post_add</mat-icon>
+                        <span>Add system</span> 
+                     </a>
+                </li>
+                <li class="hover-menu-items">
+                    <a>
+                        <mat-icon material-icons-outlined>view_in_ar</mat-icon>
+                        <span>View systems</span> 
+                     </a>
+                </li>
+                <li class="hover-menu-items">
+                    <a>
+                        <mat-icon material-icons-outlined>bar_chart</mat-icon>
+                        <span>View metrics</span> 
+                     </a>
+                </li>
+                <li class="hover-menu-items">
+                    <a>
+                        <mat-icon material-icons-outlined>filter_alt</mat-icon>
+                        <span>View filters</span> 
+                     </a>
+                </li>
+            </ul>
+            <!--sub menu ends-->
+        </li>
+
+    </div>
+</div>

@@ -20,6 +20,7 @@ import { HighchartsComponent } from './highcharts/highcharts.component';
 //charts modules
 import { HighchartsChartModule } from 'highcharts-angular';
 
+
 //ng material
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,6 +39,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HeaderComponent } from './header/header.component';
 import { BackupComponent } from './backup/backup.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { MainBarComponent } from './main-bar/main-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     HeaderComponent,
     BackupComponent,
     SideBarComponent,
+    MainBarComponent,
   ],
   imports: [
     BrowserModule,

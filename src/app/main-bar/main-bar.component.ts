@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationServiceService } from '../navigation-service.service';
 
 @Component({
-  selector: 'app-side-bar',
-  templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.css']
+  selector: 'app-main-bar',
+  templateUrl: './main-bar.component.html',
+  styleUrls: ['./main-bar.component.css']
 })
-export class SideBarComponent implements OnInit {
+export class MainBarComponent implements OnInit {
   newClassName: boolean;
   constructor(private navigationservice: NavigationServiceService) { }
 

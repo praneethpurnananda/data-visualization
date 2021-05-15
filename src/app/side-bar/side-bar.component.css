@@ -1,0 +1,107 @@
+.sidebar{
+    z-index: 1;
+    background-color: #2F323A;
+    position: fixed;
+    top: 50px;
+    width: 250px;
+    height: calc(100% - 0%);
+    transition: 0.3s;
+    transition-property: width;
+    /* overflow-y: auto; */
+    list-style: none;
+}
+
+.sidebar .sidebar-menu{
+    overflow: hidden;
+}
+
+.sidebar .sidebar-menu .item{
+    width: 250px;
+    overflow: hidden;
+}
+
+.sidebar .sidebar-menu .item .menu-btn{
+    display: block;
+    color: #fff;
+    position: relative;
+    padding: 25px 20px;
+    transition: 0.3s;
+    transition-property: color;
+    cursor: pointer;
+}
+
+.sidebar .sidebar-menu .item .menu-btn:hover{
+    color: #4CCEE8;
+}
+
+.sidebar .sidebar-menu .item .menu-btn mat-icon{
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.sidebar.collapse{
+    width: 70px;
+}
+
+.sidebar.collapse a .sidebar-text{
+    display: none;
+}
+
+.sidebar.collapse .sidebar-menu .item .menu-btn{
+    font-size: 23px;
+}
+
+/* sub menu hover effects */
+.item{
+    display: flex;
+}
+
+.item ul{
+    visibility: hidden;
+    position: absolute;
+    background: #2c3b41;
+    color: #FFFFFF;
+    width: 200PX;
+    display: none;
+    display: flex;
+    font-size: 15px;
+    padding: 0;
+}
+
+.item .hover-menu-collapse{
+    left: 70px;
+}
+
+.item .hover-menu{
+    left: 250px;
+}
+
+.item .hover-menu-items{
+    margin-left: 5%;
+    margin-bottom: 10%;
+    cursor: pointer;
+    transition: 0.3s;
+    transition-property: color;
+}
+
+.item .hover-menu-items:hover{
+    color: #4CCEE8;
+}
+
+
+.item .hover-menu mat-icon,
+.item .hover-menu-collapse mat-icon{
+    vertical-align: middle;
+    margin-right: 10%;
+}
+
+.item:hover > ul,
+.item:focus-within > ul,
+.item ul:hover,
+.item ul:focus,
+.item:hover .hover-menu-text{
+    visibility: visible;
+    display: block;
+    border: 1px solid #FFFFFF;
+    list-style: none;
+}

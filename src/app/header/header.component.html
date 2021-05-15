@@ -1,0 +1,25 @@
+<div class="header">
+    <div class="header-menu">
+        <div class="sidebar-btn" (click)="navFunction()">
+            <mat-icon>sort</mat-icon>
+        </div>
+        <div class="title"><img src="../../assets/msilogo1.png" alt=""></div>
+        <ul>
+            <li>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon class="material-icons-outlined">dashboard</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                      <mat-icon>account_circle</mat-icon>
+                      <span>Update Profile</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>logout</mat-icon>
+                        <span>Logout</span>
+                      </button>
+                  </mat-menu>
+            </li>
+        </ul>
+    </div>
+</div>
