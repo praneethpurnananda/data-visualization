@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.wrapper .header{
+    z-index: 1;
+    background-color: #FFFFFF;
+    position: fixed;
+    width: calc(100% - 0%);
+    height: 50px;
+    display: flex;
+    top: 0;
+}
+
+.wrapper .header .header-menu{
+    width: calc(100% - 0%);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.wrapper .header .header-menu img{
+    margin-left: 50px; 
+    width: 28%;
+}
+
+.wrapper .header .header-menu .sidebar-btn{
+    color: #09090C;
+    position: absolute;
+   /* margin-left: 240px;*/
+    font-size: 22px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+    transition-property: color;
+}
+
+.wrapper .header .header-menu .sidebar-btn:hover{
+    color: #4CCEE8;
+}
+
+.wrapper .header .header-menu ul{
+    display: flex;
+}
+
+.wrapper .header .header-menu ul li a{
+    color: #09090C;
+    display: block;
+     margin: 0 10px;
+    line-height: 15px;
+    text-align: center;
+}
+
+
+.wrapper .header{
+    box-shadow: 0 10px 30px 0 rgb(47 60 74 / 8%);
+}
+
+.wrapper .sidebar{
+    z-index: 1;
+    background-color: #2F323A;
+    position: fixed;
+    top: 50px;
+    width: 250px;
+    height: calc(100% - 0%);
+    transition: 0.3s;
+    transition-property: width;
+    /* overflow-y: auto; */
+}
+
+.wrapper .sidebar .sidebar-menu{
+    overflow: hidden;
+}
+
+.wrapper .sidebar .sidebar-menu .item{
+    width: 250px;
+    overflow: hidden;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn{
+    display: block;
+    color: #fff;
+    position: relative;
+    padding: 25px 20px;
+    transition: 0.3s;
+    transition-property: color;
+    cursor: pointer;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn:hover{
+    color: #4CCEE8;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn mat-icon{
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn .drop-down{
+    float: right;
+    /* font-size: 20px; */
+    vertical-align: middle;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu{
+    background: #3498DB;
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.3s;
+    transition-property: background, max-height;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu a{
+    display: block;
+    position: relative;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 15px;
+    padding: 20px;
+    border-bottom: 1px solid #8FC5E9;
+    transition: 0.3s;
+    transition-property: background;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu a:hover{
+    background: #55b1F0;
+}
+
+.wrapper .sidebar .sidebar-menu .item .sub-menu mat-icon{
+    vertical-align: middle;
+    margin-right: 17px;
+    font-size: 22px;
+}
+
+.wrapper .sidebar .sidebar-menu .item:target .sub-menu{
+    max-height: 500px;
+}
+
+.wrapper.collapse .sidebar{
+    width: 70px;
+}
+
+.wrapper.collapse .sidebar a .sidebar-text{
+    display: none;
+}
+
+.wrapper.collapse .sidebar .sidebar-menu .item .menu-btn{
+    font-size: 23px;
+}
+
+.wrapper.collapse .sidebar .sidebar-menu .item .sub-menu mat-icon{
+    font-size: 18px;
+    padding-left: 3px;
+}
+
+.wrapper .main-container{
+    width: calc(100% - 250px);
+    margin-top: 50px;
+    margin-left: 250px;
+    padding: 15px;
+    /* background-color: blue; */
+    /* height: 100vh; */
+    transition: 0.3s;
+}
+
+.wrapper.collapse .main-container{
+    width: calc(100% - 70px);
+    margin-left: 70px;
+}
+
+/* sub menu hover effects */
+.item{
+    display: flex;
+}
+
+.item ul{
+    visibility: hidden;
+    position: absolute;
+    background: #2c3b41;
+    color: #FFFFFF;
+    width: 200PX;
+    display: none;
+    display: flex;
+    font-size: 15px;
+}
+
+.item .hover-menu-collapse{
+    left: 70px;
+}
+
+.item .hover-menu{
+    left: 250px;
+}
+
+.item .hover-menu-items{
+    margin-left: 5%;
+    margin-bottom: 10%;
+    cursor: pointer;
+    transition: 0.3s;
+    transition-property: color;
+}
+
+.item .hover-menu-items:hover{
+    color: #4CCEE8;
+}
+
+
+.item .hover-menu mat-icon,
+.item .hover-menu-collapse mat-icon{
+    vertical-align: middle;
+    margin-right: 10%;
+}
+
+.item:hover > ul,
+.item:focus-within > ul,
+.item ul:hover,
+.item ul:focus,
+.item:hover .hover-menu-text{
+    visibility: visible;
+    display: block;
+    border: 1px solid #FFFFFF;
+    
+}
+
+
+
+

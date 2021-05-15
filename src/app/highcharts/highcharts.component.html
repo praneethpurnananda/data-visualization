@@ -1,7 +1,7 @@
 <div class="main">
   <mat-card class="card">
     <div class="left">
-      <span class="title">Dashboard</span>
+      <span class="title">Cost Analysis</span>
       <div class="content">
           <div class="price">
             <span class="main-price">$3468.92</span>
@@ -19,12 +19,26 @@
     <div class="right">
       <div class="filters">
           <mat-form-field appearance="outline" class="form-field">
-              <mat-label>Outline form field</mat-label>
-              <input matInput placeholder="Placeholder">
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="form-field">
-              <mat-label>Outline form field</mat-label>
-              <input matInput placeholder="Placeholder">
+            <mat-label>Filters</mat-label>
+            <mat-select [(ngModel)]="selectedValue"  (ngModelChange)="called()">
+              <mat-option *ngFor="let i of options" [value]="i.value">
+                {{i.viewValue}} <span style="float: right">{{i.info}}</span>
+              </mat-option>
+              <mat-option (click)="picker.open()">
+                Select date range &nbsp;&nbsp;<mat-icon>arrow_right_alt</mat-icon>
+              </mat-option>
+              <mat-date-range-input [rangePicker]="picker" style="display: none">
+                <input matStartDate #one>
+                <input matEndDate #two>
+              </mat-date-range-input>
+              <!-- <mat-date-range-picker #picker></mat-date-range-picker> -->
+              <mat-date-range-picker #picker>
+                <mat-date-range-picker-actions>
+                  <button mat-button matDateRangePickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDateRangePickerApply (click)="rangeFilter(one.value , two.value)">Apply</button>
+                </mat-date-range-picker-actions>
+              </mat-date-range-picker>
+            </mat-select>
           </mat-form-field>
         </div>
       <highcharts-chart

@@ -1,0 +1,262 @@
+import { Component, OnInit } from "@angular/core";
+import Highcharts from "highcharts/highmaps";
+
+@Component({
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
+})
+export class AppComponent implements OnInit {
+  Highcharts: typeof Highcharts = Highcharts;
+  chartOptions: Highcharts.Options = {};
+  updateFlag: boolean = true;
+
+  data = {
+    Status: true,
+    Result: [
+      {
+        algoName: "Lograthimic",
+        target: "CLOSELY_ACTIVATED",
+        thresholds: {
+          majorThreshold: "",
+          minorThreshold: "",
+          criticalThreshold: ""
+        },
+        dataPoints: [
+          [1609545600.0, 25147.661971800186],
+          [1609632000.0, 50375.78896291526],
+          [1609718400.0, 76635.3650497256],
+          [1609804800.0, 103403.64073669101],
+          [1609891200.0, 129982.52668957168],
+          [1609977600.0, 156033.29549576997],
+          [1610064000.0, 181908.03612319578],
+          [1610150400.0, 207538.3900227178],
+          [1610236800.0, 232537.93045754876],
+          [1610323200.0, 259518.28323237147],
+          [1610409600.0, 287117.94076350937],
+          [1610496000.0, 315598.0096756201],
+          [1610582400.0, 344981.4672843964],
+          [1610668800.0, 374292.2230635927],
+          [1610755200.0, 400446.2022546162],
+          [1610841600.0, 426418.2630530269],
+          [1610928000.0, 453672.35904891463],
+          [1611014400.0, 481108.08560621465],
+          [1611100800.0, 508919.3459718653],
+          [1611187200.0, 536005.234649927],
+          [1611273600.0, 563600.1848151815],
+          [1611360000.0, 591718.4525784351],
+          [1611446400.0, 617497.4846371756],
+          [1611532800.0, 645382.5006462863],
+          [1611619200.0, 673118.6303589925],
+          [1611705600.0, 701915.5012094488],
+          [1611792000.0, 729731.4253885765],
+          [1611878400.0, 758573.6155216239],
+          [1611964800.0, 785435.1015840762],
+          [1612051200.0, 812502.451246314]
+        ],
+        forecastedData: [
+          [1612137600, 839556.8743005687],
+          [1612137600, 866612.1090436996],
+          [1612137600, 893667.2928191804],
+          [1612137600, 920722.4797950271],
+          [1612137600, 947777.6665699161],
+          [1612137600, 974832.8533574237],
+          [1612137600, 1001888.0401441389],
+          [1612137600, 1028943.2269309037],
+          [1612137600, 1055998.4137176657],
+          [1612137600, 1083053.6005044277]
+        ],
+        anomalies: {
+          minor: [[1601818500, 4.0]],
+          major: [[1601837100, 5.0], [1601851200, 5.0]],
+          critical: [[1601834700, 8.0]]
+        }
+      }
+    ]
+  };
+
+  constructor() {}
+
+  ngOnInit() {
+    this.getDummyData();
+  }
+
+  isIn(anomoly, point) {
+    const [x, y] = point;
+    return anomoly.some(([ax, ay]) => ax === x && ay === y);
+  }
+
+  getDummyData() {
+    let dataPoints_EPOC = [];
+    let major_EPOC = [];
+    let minor_EPOC = [];
+    let critical_EPOC = [];
+
+    this.data["Result"].forEach(element => {
+      if ("dataPoints" in element && "algoName" in element) {
+        let clone_element = { ...element };
+
+        element["dataPoints"].map(([x, y]) => {
+          dataPoints_EPOC.push([x, y * 1000]);
+          return [x, y * 1000];
+        });
+
+        element["anomalies"]["major"].map(([x, y]) => {
+          major_EPOC.push([x * 1000, y]);
+          return [x * 1000, y];
+        });
+
+        element["anomalies"]["minor"].map(([x, y]) => {
+          minor_EPOC.push([x * 1000, y]);
+          return [x * 1000, y];
+        });
+
+        element["anomalies"]["critical"].map(([x, y]) => {
+          critical_EPOC.push([x * 1000, y]);
+          return [x * 1000, y];
+        });
+
+        clone_element["dataPoints"] = dataPoints_EPOC;
+        clone_element["anomalies"]["major"] = major_EPOC;
+        clone_element["anomalies"]["minor"] = minor_EPOC;
+        clone_element["anomalies"]["critical"] = critical_EPOC;
+
+        this.plotGraph(clone_element);
+      } else {
+        console.error(
+          "1 or more Keys Missing from response JSON = ",
+          Object.keys(element)
+        );
+      }
+    });
+  }
+
+  plotGraph(dataInstance) {
+    // dataInstance['dataPoints'] should be an array of [x,y] coordinates to plot on Graph
+    //console.log("dataInstance = ", dataInstance);
+
+    if (dataInstance["algoName"] != "EagleEye") {
+      //console.log("algoName = ", dataInstance["algoName"]);
+
+      if (
+        dataInstance["dataPoints"] === undefined ||
+        dataInstance["dataPoints"] === null ||
+        dataInstance["dataPoints"] === ""
+      ) {
+        console.error(
+          "No dataPoints to project on Graph ,dataInstance[dataPoints] = ",
+          dataInstance["dataPoints"]
+        );
+      } else {
+        console.log(
+          "Is dataInstance[dataPoints] an [] = ",
+          dataInstance["dataPoints"] instanceof Array
+        );
+        //console.log("dataInstance[dataPoints] = ", dataInstance["dataPoints"]);
+
+        if (dataInstance["dataPoints"] instanceof Array) {
+          if (dataInstance["dataPoints"].length > 0) {
+            this.chartOptions = {
+              chart: {
+                zoomType: "xy"
+              },
+
+              mapNavigation: { enableMouseWheelZoom: true },
+
+              title: {
+                //text:'Anomaly Detection',
+                text: dataInstance["algoName"],
+                style: {
+                  color: "orange",
+                  fontFamily: "Calibri",
+                  fontSize: "25"
+                }
+              },
+
+              credits: { enabled: false },
+              legend: { enabled: true },
+              plotOptions: { series: { showInLegend: true } },
+
+              xAxis: {
+                crosshair: {
+                  width: 1,
+                  color: "#3168DA",
+                  dashStyle: "ShortDash"
+                },
+                gridLineWidth: 1,
+                dateTimeLabelFormats: { hour: "%l %p" },
+                type: "datetime",
+                title: {
+                  text: "Timestamp",
+                  //textAlign : 'center',
+                  style: { color: "purple", fontSize: "15px" }
+                }
+              },
+              yAxis: {
+                crosshair: {
+                  width: 1,
+                  color: "#3168DA",
+                  dashStyle: "ShortDash"
+                },
+                gridLineWidth: 1,
+                title: {
+                  text: "Datapoints",
+                  //textAlign : 'center',
+                  style: { color: "purple", fontSize: "15px" }
+                },
+
+                plotLines: [
+                  {
+                    color: "#FF0000",
+                    dashStyle: "Dash",
+                    width: 2,
+                    value: 8
+                  },
+                  {
+                    color: "yellow",
+                    dashStyle: "Dash",
+                    width: 2,
+                    value: 4
+                  }
+                ]
+              },
+
+              series: [
+                {
+                  type: "area",
+                  color: "red",
+                  name: "Anomalies Detection",
+                  data: dataInstance["dataPoints"]
+                },
+                {
+                  type: "area",
+                  color: "green",
+                  name: "Forecast Detection",
+                  data: dataInstance["forecastedData"]
+                }
+              ]
+            };
+          } else {
+            console.error(
+              "No dataInstance to project on Graph = ",
+              dataInstance["dataPoints"]
+            );
+            console.error(
+              "Length of dataInstance = ",
+              dataInstance["dataPoints"].length
+            );
+          }
+        } else {
+          console.error(
+            "dataInstance received is not an array = ",
+            dataInstance["dataPoints"]
+          );
+        }
+      }
+    } else if (dataInstance["algoName"] != "EagleEye") {
+      console.log("Algo Type = ", dataInstance["algoName"]);
+    } else {
+      console.error("algoName = ", dataInstance["algoName"]);
+    }
+  }
+}

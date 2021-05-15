@@ -1,0 +1,150 @@
+<!--wrapper start-->
+<div [className]="expandNav ? 'wrapper collapse' : 'wrapper' ">
+    <!--header starts-->
+    <div class="header">
+        <div class="header-menu">
+            <!-- <div class="title">IDAP <span>One UI</span></div> -->
+            <div class="sidebar-btn" (click)="navFunction()">
+                <mat-icon>sort</mat-icon>
+            </div>
+            <div class="title"><img src="../../assets/msilogo1.png" alt=""></div>
+            <ul>
+                <li>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon class="material-icons-outlined">dashboard</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                          <mat-icon>account_circle</mat-icon>
+                          <span>Update Profile</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon>logout</mat-icon>
+                            <span>Logout</span>
+                          </button>
+                      </mat-menu>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--header ends-->
+    <!--side bar starts-->
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <!--profile and image seciton-->
+
+            <li class="item">
+                <a class="menu-btn">
+                    <mat-icon material-icons-outlined>people</mat-icon>
+                    <span class="sidebar-text">User Management</span>
+                </a>
+            </li>
+            <li class="item">
+                <a class="menu-btn">
+                    <mat-icon material-icons-outlined>settings</mat-icon>
+                    <span class="sidebar-text">Config Management</span>
+                </a>
+                <!--submenu demo class="hover-menu" -->
+                <ul [className]="expandNav ? 'hover-menu-collapse' : 'hover-menu' ">
+                    <br>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>post_add</mat-icon>
+                            <span>Add system</span> 
+                         </a>
+                    </li>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>view_in_ar</mat-icon>
+                            <span>View systems</span> 
+                         </a>
+                    </li>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>bar_chart</mat-icon>
+                            <span>View metrics</span> 
+                         </a>
+                    </li>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>filter_alt</mat-icon>
+                            <span>View filters</span> 
+                         </a>
+                    </li>
+                </ul>
+                <!--sub menu ends-->
+            </li>
+            <li class="item">
+                <a class="menu-btn">
+                    <mat-icon class="material-icons-outlined">auto_awesome_mosaic</mat-icon>
+                    <span class="sidebar-text">Monit Control Center</span>
+                </a>
+                <!--submenu demo class="hover-menu" -->
+                <ul [className]="expandNav ? 'hover-menu-collapse' : 'hover-menu' ">
+                    <br>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>post_add</mat-icon>
+                            <span>Add metrics</span> 
+                         </a>
+                    </li>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>view_in_ar</mat-icon>
+                            <span>View metrics</span> 
+                         </a>
+                    </li>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>filter_alt</mat-icon>
+                            <span>View filters</span> 
+                         </a>
+                    </li>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>bar_chart</mat-icon>
+                            <span>Metrics summary</span> 
+                         </a>
+                    </li>
+                    <li class="hover-menu-items">
+                        <a>
+                            <mat-icon material-icons-outlined>schedule</mat-icon>
+                            <span>Shedule downtime</span> 
+                         </a>
+                    </li>
+                </ul>
+                <!--sub menu ends-->
+            </li>
+            <li class="item">
+                <a class="menu-btn">
+                    <mat-icon class="material-icons-outlined">account_tree</mat-icon>
+                    <span class="sidebar-text">Data Stream Management</span>
+                </a>
+                                <!--submenu demo class="hover-menu" -->
+                                <ul [className]="expandNav ? 'hover-menu-collapse' : 'hover-menu' ">
+                                    <br>
+                                    <li class="hover-menu-items">
+                                        <a>
+                                            <mat-icon material-icons-outlined>post_add</mat-icon>
+                                            <span>Add topic</span> 
+                                         </a>
+                                    </li>
+                                    <li class="hover-menu-items">
+                                        <a>
+                                            <mat-icon material-icons-outlined>view_in_ar</mat-icon>
+                                            <span>View topics</span> 
+                                         </a>
+                                    </li>
+                                </ul>
+                                <!--sub menu ends-->
+            </li>
+
+
+        </div>
+    </div>
+    <!--side bar ends-->
+    <div class="main-container">
+        <h1>hello</h1>
+    </div>
+</div>
+<!--wrapper ends-->
